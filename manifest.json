@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Dictionary",
+    "description": "An extension for in-webpage text dictionary",
+    "version": "1.0",
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/dictionaryIcon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["contentScript.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    }
+}
