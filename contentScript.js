@@ -86,11 +86,15 @@ dictionaryIcon.addEventListener("click", event => {
     dictionaryIcon.style.display = "none";
     dictionaryWrapper.style.display = "block";
 
-    selectedWordElement.textContent = responseData[0].word;
     
-    const definitionsArray = responseData[0].meanings[0].definitions;
-    const definitionElements = createDefinitionElements(definitionsArray);
-    appendDefinitionElements(definitionElements, definitionElementsContainer);
+    if(!responseData[0]){
+        selectedWordElement.textContent = "NO DEFINITION FOUND!!"
+    }else{
+        selectedWordElement.textContent = responseData[0].word;
+        const definitionsArray = responseData[0].meanings[0].definitions;
+        const definitionElements = createDefinitionElements(definitionsArray);
+        appendDefinitionElements(definitionElements, definitionElementsContainer);
+    }
 })
 
 document.addEventListener("mouseup", async event => {
